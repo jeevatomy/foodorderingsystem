@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar Section Starts Here -->
+    <section class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" title="Logo">
+                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
+                </a>
+            </div>
+
+            <div class="menu text-right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="foods.html">Menu</a></li>
+                    <li><a href="order-tracking.html">Track Order</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="payments.html">Payment</a></li>
+                </ul>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <!-- Navbar Section Ends Here -->
+
+    <!-- Payment Section Starts Here -->
+    <section class="payment text-center">
+        <div class="container">
+            <h2>Payment Details</h2>
+
+            <!-- Payment Form Starts Here -->
+            <form id="paymentForm">
+                <input type="text" name="card-number" placeholder="Card Number" required>
+                <input type="text" name="expiry-date" placeholder="Expiry Date (MM/YY)" required>
+                <input type="text" name="cvv" placeholder="CVV" required>
+                <input type="text" name="cardholder-name" placeholder="Cardholder Name" required>
+                <input type="submit" name="submit" value="Pay Now" class="btn btn-primary">
+            </form>
+            <!-- Payment Form Ends Here -->
+
+            <!-- Payment Confirmation Section -->
+            <div id="payment-status" style="margin-top: 20px;"></div>
+        </div>
+    </section>
+    <!-- Payment Section Ends Here -->
+
+    <!-- Footer Section Starts Here -->
+    <section class="footer">
+        <div class="container text-center">
+            <p>All rights reserved. Designed by <a href="#">Your Name</a></p>
+        </div>
+    </section>
+    <!-- Footer Section Ends Here -->
+
+    <!-- JavaScript for Payment Handling -->
+    <script>
+        // Payment form handler
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            
+            const cardNumber = document.querySelector('input[name="card-number"]').value;
+            const expiryDate = document.querySelector('input[name="expiry-date"]').value;
+            const cvv = document.querySelector('input[name="cvv"]').value;
+            const cardholderName = document.querySelector('input[name="cardholder-name"]').value;
+
+            // Simulate payment processing (in real systems, you'd integrate with a payment API)
+            if (validatePayment(cardNumber, expiryDate, cvv, cardholderName)) {
+                document.getElementById('payment-status').innerHTML = '<p style="color:green;">Payment Successful!</p>';
+            } else {
+                document.getElementById('payment-status').innerHTML = '<p style="color:red;">Payment Failed. Please check your details.</p>';
+            }
+        });
+
+        // Simple validation function
+        function validatePayment(cardNumber, expiryDate, cvv, cardholderName) {
+            // Basic validation (you could improve this with better checks or regex)
+            if (cardNumber.length === 16 && expiryDate && cvv.length === 3 && cardholderName) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

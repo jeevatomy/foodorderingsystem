@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Section Starts Here -->
+    <section class="login">
+        <div class="container">
+            <h2 class="text-center">Login to Your Account</h2>
+
+            <form onsubmit="handleLogin(event)" class="order">
+                <fieldset>
+                    <legend>Login</legend>
+
+                    <div class="order-label">Username</div>
+                    <input type="text" id="username" name="username" placeholder="Enter Username" class="input-responsive" required>
+
+                    <div class="order-label">Password</div>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" class="input-responsive" required>
+
+                    <input type="submit" name="submit" value="Login" class="btn btn-primary">
+                </fieldset>
+            </form>
+
+            <p class="text-center">Don't have an account? <a href="#">Sign Up Here</a></p>
+        </div>
+    </section>
+    <!-- Login Section Ends Here -->
+
+    <!-- footer Section Starts Here -->
+    <section class="footer">
+        <div class="container text-center">
+            <p>All rights reserved. Designed By <a href="#">JAM</a></p>
+        </div>
+    </section>
+    <!-- footer Section Ends Here -->
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Basic check (you can improve this by adding actual user authentication)
+            if (username === 'user' && password === 'password') {
+                // Save login state in localStorage
+                localStorage.setItem('loggedIn', 'true');
+                // Redirect to home page
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+</html>
